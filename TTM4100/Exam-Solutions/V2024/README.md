@@ -780,15 +780,13 @@ So its 2 messages every 3 slot = 2L/3T
 - Value
 - TTL
 
-| Type | Name | Value |
-| --- | --- | --- |
-| A | A hostname | Ip of hostname |
-| NS | A Domain Name | The hostname of an authoritative DNS server that
-knows how to obtain the IP addresses for hosts in the
-domain |
-| CNAME | Name | A canonical hostname for the alias hostname Name |
-| MX | Name | The canonical name of a mail server that has an alias
-hostname Name |
+| Type  | Name        | Value                                                                                        |
+| ----- | ----------- | -------------------------------------------------------------------------------------------- |
+| A     | Hostname    | The IP address of the hostname                                                               |
+| NS    | Domain name | The hostname of an authoritative DNS server that knows how to get IP addresses in the domain |
+| CNAME | Alias name  | The canonical (real) hostname for the alias hostname                                         |
+| MX    | Mail domain | The canonical hostname of a mail server responsible for accepting email for the domain       |
+
 
 </aside>
 
