@@ -1,6 +1,5 @@
 # TDT4120 – Algoritmer og Datastrukturer
 
-Velkommen til GitHub-repositoriet for **TDT4120 – Algoritmer og Datastrukturer**.  
 Innholdet i repositoriet er basert på [Abdul Bari](https://www.youtube.com/@abdul_bari) og [Kateter](https://kateter.no/kurs/algdat) i tilegg til forelesninger og øvinger fra faget.
 ---
 
