@@ -44,3 +44,15 @@ if __name__ == "__main__":
         QuickSort(arr, 0, len(arr) - 1 if arr else -1)  # Sorter listen
         print("Etter sortering:", arr) # Skriv ut etter sortering
         print("-" * 30)                # Skillelinje
+        
+        
+# Bra når:
+# - Generelt rask på store datasett
+# - In-place sortering ønskes (krever lite ekstra minne)
+# - Gjennomsnittlig kjøretid er O(n log n)
+# - Dataene er tilfeldig eller jevnt fordelt
+
+# Dårlig når:
+# - Verste tilfelle O(n²) kan oppstå (f.eks. allerede sortert eller nesten sortert data uten tilfeldig pivot)
+# - Stabil sortering er nødvendig (Quick Sort er vanligvis ustabil)
+# - Når ekstremt konsekvent ytelse er viktig
