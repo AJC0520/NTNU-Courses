@@ -24,6 +24,15 @@ CountSort(A, B, max(A))
 print(B)
 
         
-        
-        
+# Bra når:
+# - Elementer er heltall.
+# - Hvis det største tallet k, ikke er mye større en antall elementer n. O(k + n) ≈ O(n)
+# - Når man trenger stabil sortering
+# - Hvis k er lite blir algoritmen veldig rask
+
+# Dårlig når:
+# - Hvis k er veldig stort.
+# - Ikke heltall
+# - Hvis tallene sprer seg over et stort intervall med få elementer (jo mindre C arrayet er jo bedre)
+   
         
