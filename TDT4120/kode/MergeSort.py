@@ -42,6 +42,20 @@ arr = [38, 27, 43, 3, 9, 82, 10]  # Eksempel-liste
 print("Before sorting:", arr)      # Skriv ut listen før sortering
 MergeSort(arr, 0, len(arr) - 1)   # Kall MergeSort på hele listen
 print("After sorting: ", arr)      # Skriv ut listen etter sortering
+
+
+# Bra når:
+# - Store datasett
+# - Ustabil eller skjev datafordeling
+# - Når stabil sortering er ønskelig
+# - Eksterne sorteringer / store filer
+# - Konsekvent ytelse uavhengig av dataenes rekkefølge
+
+# Dårlig når:
+# - Minnebruk er kritisk (krever O(n) ekstra plass)
+# - Små datasett (overhead gjør enklere algoritmer raskere)
+# - In-place sortering er påkrevd
+
     
     
     
