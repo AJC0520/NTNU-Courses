@@ -1,0 +1,90 @@
+1. Hvilke tekniske utfordringer har trådløse kommunikasjonsnettverk sammenlignet med kablede kommunikasjonsnettverk ? 
+	- Større signalstøy og interferens
+		- Trådløse signaler kan forstyrres av:
+			- Vegger, møbler og andre fysiske hindringer
+			- Andre trådløse enheter (mikro, bluetooth, nabonett)
+		- Det gir lavere signalkvalitet og høyere feilbitrate
+	- Signalutbredelse og dekning
+		- Radiosignaler svekkes raskt med avstand
+		- Signaler kan reflekteres, spres eller blokkeres
+	- Sikkerhet
+		- Trådløse signaler kan avlyttes av alle i nærheten.
+		- Krever kryptering
+		- Vanskeligere å oppdage uautoriserte brukere
+	- Begrenset bandwidth og kapasitet
+		- Trådløse nett har mindre bandwidth enn moderne kablede nett
+		- Flere brukere gir samtidig lavere ytelse per enhet
+		- 
+2. Forklar forskjellene mellom passiv skanning og aktiv skanning som brukes av en trådløs enhet i et 802.11-nettverk?
+	- Passiv skanning:
+		- Enheten lytter på ulike kanaler etter beacon-meldinger sendt ut av tilgangspunkter
+		- Disse beaconene sendes med jevne mellomrom og inneholder nettverksnavn (SSID), kanal, sikkerhetsinstillinger osv.
+		- Brukes for å sende egne meldinger, mer energieffektivt, "stille", tar lengre tid, fungere bare hvis AP-er faktisk sender beacons.
+	- Aktiv skanning:
+		- Enheten sender probe request-meldinger på hver kanal og spør "Er det noen trådløse nettverk her"
+		- AP-er som mottar denne meldingens varer med probe response
+		- Går raskere enn passiv, finner AP med skjult SSID
+		- Bruker mer strøm, skaper mer trafik
+3. Hva er de to hovedårsakene til at 802.11 MAC-protokollen (WiFI) ikke implementerer kollisjonsdeteksjon slik som 802.3 Ethernet-protokollen? 
+	- Fysiske begrensninger i trådløs medium
+		- I trådløse nettverk kan en enhet ikke sende og motta samtidig på samme kanal
+		- Når en enhet sender, kan den derfor ikke høre om en kollisjon skjer
+		- Dette gjør deteksjon praktisk talt umulig.
+	- Skjult node-problem og variabel signalstyrke
+		- To enheter som ikke hører hverandre kan sende samtidig
+		- Kollisjon oppstår ved mottakeren, men senderne oppdager det ikke.
+		- Derfor må WI-Fi bruke kollisjonsunngåelse i stedet for deteksjon.
+	- (Wi-Fi kan ikke oppdage kollisjoner under sending, derfor må den forsøke å unngå kollisjoner i stedet for å oppdage dem.)
+4. Hvordan bidrar bruken av RTS (Request to Send) og CTS (Clear to Send) kontrollrammer i 802.11 MAC-protokollen til å redusere kollisjoner, spesielt i nærvær av skjulte terminaler?
+	- Skjulte terminaler -> To stasjoner er utenfor rekkevidde for hverandre, men begge kan kommunisere med en felles tilgangspunkt.
+	- A og C kan sende samtidig til B uten å høre hverandre -> kollisjon hos B
+	- Request to send
+		- Før en stasjon sender data sender den en liten RTS-ramme til B for å be om tilattelse til å sende.
+	- Clear to send
+		- B svarer med en CTS ramme som sier at den kan sende
+		- CTS rammen sendes til alle stasjoner i området for å fortelle dem at kanalen vil være opptatt.
+	- Dette reduserer kollisjon fordi:
+		- Når andre stasjoner mottar en CTS, vet de at de må vente med å sende
+		- Løser skjule terminal-problemet ved at stasjoner skjult for hverandre får beskjed om å vente
+		- Reduserer sjansen for kollisjoner fordi kun den stasjonen som fikk CTS, sender data.
+5. Forklar forskjellen mellom Authentication Header (AH) og Encapsulation Security Payload (ESP) protokollene i IPsec, og begrunn hvorfor ESP er mer utbredt i bruk for VPN-er. 
+	- Authentication Header
+		- Hovedfunksjon: Gir mer integritet og autentisering av IP-pakkens innhold (header + data)
+		- Kryptering: Gir ikke kryptering, altså inen konfidensialitet
+		- Beskytter mot manipulering av data og falske avsendere, men all data er synlig.
+		- AH inkluderer en autentiseringskode som sikrer at innholdet ikke er endret underveis
+	- Encapsulation Security Payload (ESP)
+		- Hovedfunksjon: Gir både kryptering og autentisering
+		- Krypterer data i ip-pakken, slik at innholdet ikke kan leses av uvedkommende.
+		- Kan også autentisere data for å sikre at den ikke er endret
+		- Gir altså en mer komplett sikkerhetspakke.
+	- ESP er mer utbredt i VPN-er fordi:
+		- VPN-er trenger konfidensialitet for å beskytte brukerdata mot avlytting.
+		- AH mangler kryptering, og kan derfor ikke sikre data mot avlesing.
+		- ESP kan gjøre både kryptering og autentisering, noe som gjør den idell for sikre VPN-forbindelser
+		- I praksis gir ESP en helhetlig sikkerhetsløsning som dekker både personvern og integritet.
+6. Hva er forskjellen mellom symmetrisk nøkkelkryptografi og asymmetrisk nøkkelkryptografi (offentlig nøkkelkryptografi) ? Nevn eksempler på slike nøkkelsystemer. 
+	- Symmetrisk nøkkelkryptografi (samme nøkkel brukes til både kryptering og dekryptering)
+		- Rask of effektiv
+		- Krever at begge parter på forhånd deler den samme hemmelige nøkkelen
+		- Sårbart hvis nøkkelen blir stjålet eller lekket
+		- AES, DES
+	- Asymmetrisk nøkkelkryptografi (offentlig)
+		- Bruker et nøkkel par(offentlig for kryptering, privat for dekryptering)
+		- Trygt selv om offentlig nøkkel deles fritt
+		- Langsommere
+		- Brukes ofte til nøkkelutveksling, digital signering og autentisering.
+		- RSA, ECC, DIffe-Hellmann
+7. Forklar begrepene malware, tjenestenekt angrep og sniffing
+	- Malware
+		- Programvare laget for å skade, infisere, eller få uautorisert tilgang til systemer.
+		- Virus, worms, trojaner, spyware/ransomware
+	- Tjenestenekt (DDoS)
+		- Angrep som overbelaster en server eller tjeneste slik at den blir utilgjengelig.
+		- DDos, samme ide, men med mange angrepere samtidig (botnett)
+		- Nettsted krasjer eller slutter å svarer
+	- Sniffing
+		- Avlytting av nettverkstrafikk for å fange opp data.
+		- Kan brukes til å stjele passord, overvåke kommunikasjon
+		- Utføres med programmer
+		- Offeret merker det ofte ikke.
