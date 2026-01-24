@@ -62,3 +62,4 @@ Fordi O og Omega beskriver grenser, ikke cases, kan de brukes for alle casene. E
 
 
 
+
