@@ -47,5 +47,65 @@ CREATE TABLE married_person (
   FOREIGN KEY(spouse) REFERENCES married_person
     DEFERRABLE INITIALLY DEFERRED
 );
+```
 
 ```
+BEGIN TRANSACTION;
+INSERT INTO married_person VALUES ('00001','Tommy','00002');
+INSERT INTO married_person VALUES ('00002','Gina','00001');
+END TRANSACTION;
+```
+
+### Indexes
+speed up lookups on attributes so you don't scan the whole table
+```
+CREATE index studentID_index on student(ID);
+```
+
+### Views (definition + use)
+A virtual relation to hide complexity or sensitive data.
+```
+CREATE VIEW faculty AS
+SELECT id, name, dept_name
+FROM instructor;
+
+SELECT name
+FROM faculty
+WHERE dept_name = "Biology"
+```
+
+Views vs WITH: views stick around until dropped, WITH is only inside that query
+Views can be built on other views (dependency chaings)
+Materialized vs non-materialized view + maintenance approaches are discussed.
+
+### Updating views
+Updates/inserts into views are usually allowed only for simple views (one base table, no aggregates, no GROUP BY, etc.)
+
+```
+CREATE VIEW faculty AS
+SELECT id, name, dept_name
+FROM instructor;
+
+INSERT INTO faculty VALUES ('30765', 'Green', 'Music');
+```
+
+This creates issues because `salary` exists in `instructor`
+
+WITH CHECK OPTION can prevent inserts/updates that don't satisfy the view predicate.
+
+### Authorization: privileges, GRANT, roles
+List privileges: SELECT, INSERT, UPDATE, DELETE, ALL PRIVILEGES
+schema privileges: INDEX, RESOURCE, ALTERATION, DROP
+
+GRANT form:
+```
+GRANT <privilege list> ON <relation or view> TO <user list>
+```
+granting on a view does not grant privileges on underlying tables
+
+Roles:
+```
+CREATE ROLE instructor
+GRANT instructor TO theodoc
+```
+
