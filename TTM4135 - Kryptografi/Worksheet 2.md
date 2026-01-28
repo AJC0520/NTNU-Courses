@@ -1,67 +1,96 @@
-1
-a) symmetric ciphers.
-	secret key used for both encryption and decryption. hard to share safe.
-b) asymmetric ciphers
-	uses a key pair (public for encryption and private for decryption)
-b) ciphertext only attack, attacker only has access to encrypted text.
-	known-plaintext: attacker knows some pair of plaintext and corresponding ciphertext.
-		chosen-plaintext attack: attacker can chose plaintext and see corresponding ciphertext.
-			chosen-chipertext attack: attacker can chose ciphertext and get it decrypted.
-c)
-	assume an attacker has complete knowledge of how the cryptosystem works. the decrypt. meaning that a secure system never should be based on a secret algorithm.
-d)
-	transportation
-		characters in plaintext are mixed up with eachother, fixed period d, and permutation f. letters are the same.
-	substitution:
-		each letters is swapped with a specific letter.
-e)
-	synchrounous stream cipher
-		keystream is generated independently of the plaintext. sender and receiver needs to be in sync.
-f)
-	one-time pad
-		key is a truly random sequence of characters all independently generated. provides perfect secrecy since  cipher and plain are uncorrelated. 
-		key is as long as message and used only once. theorethical unbreakable but not possible.
+### Task 1
+#### a) Symmetric ciphers
+- Uses the same **secret key** for both encryption and decryption.
+- Key distribution is difficult since the key must be shared securely.
 
-2.
-1.
-	Caesar cipher:
-		25 possible keys.
-	25 / 10000 = 0.0025s
-		25/ 10^10 = 2.5*10^-9
+#### b) Asymmetric ciphers
+- Uses a **key pair**:
+  - Public key for encryption
+  - Private key for decryption
 
-Vigenere cipher with 10-character key.
-- 26^10 = 1.4 * 10^14 keys
--  10^14 / 10000 = 14116709565 sek = 447 år
-- 10^14 / 10^10 = 3.9 timer
+#### c) Attack models
+- **Ciphertext-only attack:** attacker has access only to ciphertext.
+- **Known-plaintext attack:** attacker knows some plaintext–ciphertext pairs.
+- **Chosen-plaintext attack:** attacker can choose plaintexts and obtain their ciphertexts.
+- **Chosen-ciphertext attack:** attacker can choose ciphertexts and obtain their decryptions.
 
-simple substitution cipher:
-- 26! keys
-- en pc = 1.3* 10 ^15 år
-- dedikerte chips = 1.3 milliarder år
+#### d) Kerckhoffs’ principle
+- Assume an attacker has complete knowledge of how the cryptosystem works.
+- Security must rely only on the secrecy of the key, **not on a secret algorithm**.
 
-3
-FAITH
-- Solve for P, then find constants a b and n by brute force.
+#### e) Transposition vs substitution
+- **Transposition:** characters in the plaintext are rearranged using a fixed period \( d \) and permutation \( f \); letters remain the same.
+- **Substitution:** each letter in the plaintext is replaced with another specific letter.
 
-4.
-key = EWVAMDP
+#### f) Synchronous stream cipher
+- The keystream is generated independently of the plaintext.
+- Sender and receiver must remain synchronized.
 
-5.
-1 = transposition
-	transposition only moves the letters around so the graph is similar to the one of the most common letters
-3 = simple random substitution
-	swaps out letters, so should have the same tops but just at different letters
-2 = vigenere
-	tries to flatten the curve
+#### g) One-time pad
+- The key is a truly random sequence of characters.
+- The key is as long as the message and used only once.
+- Provides **perfect secrecy** since ciphertext and plaintext are uncorrelated.
+- Theoretically unbreakable, but impractical in real systems.
 
-6
-a) (4/19, 5/18)
-b) EWNX
-c) WITH
+---
+### Task 2
 
-7
-* 7 1 1 24
-* NOWISTHETIMEFORALLGOODMENTOCOMETOTHEAIDOFTHEIRCOUNTRYZ
+#### a) Caesar cipher
+- Number of keys: 25  
+- Time at 10 000 keys/s:  
+  $\frac{25}{10\,000} = 0.0025$ s  
+- Time at $10^{10}$ keys/s:  
+  $\frac{25}{10^{10}} = 2.5 \times 10^{-9}$ s
 
-9.
-Although S2 is derived from the image, it is uniformly random when S1 is unknown, and therefore statistically independent of the image.
+#### b) Vigenère cipher (10-character key)
+- Number of keys: \( 26^{10} \approx 1.4 \times 10^{14} \)
+- Time at 10 000 keys/s:  
+  \( \approx 4.47 \times 10^{2} \) years
+- Time at \( 10^{10} \) keys/s:  
+  \( \approx 3.9 \) hours
+
+#### c) Simple substitution cipher
+- Number of keys: \( 26! \)
+- Brute force:
+  - Single PC: \( \approx 1.3 \times 10^{15} \) years
+  - Dedicated chips: \( \approx 1.3 \) billion years
+---
+
+### 3
+- Given ciphertext **FAITH**, solve for the plaintext.
+- Then find constants \( a \), \( b \), and \( n \) by brute force.
+---
+### 4
+- Key: **EWVAMDP**
+---
+### 5
+- **1:** Transposition  
+  - Letter frequencies remain the same; graph looks similar to plaintext.
+- **3:** Random simple substitution  
+  - Same frequency peaks, but at different letters.
+- **2:** Vigenère  
+  - Frequency distribution is flattened.
+---
+
+### 6
+#### a)
+$$
+\begin{pmatrix}
+4 & 5 \\
+19 & 18
+\end{pmatrix}
+$$
+#### b)
+EWNX
+#### c)
+WITH
+
+---
+### Task 7
+- \( 7\ 1\ 1\ 24 \)
+- NOWISTHETIMEFORALLGOODMENTOCOMETOTHEAIDOFTHEIRCOUNTRYZ
+
+---
+
+### 9
+Although \( S_2 \) is derived from the image, it is uniformly random when \( S_1 \) is unknown, and therefore statistically independent of the image.
