@@ -80,6 +80,7 @@ Also has error propagation, bit error in ciphertext -> same bit error in the pla
 
 **PRNG** - Algorithmic randomness. Starts from a seed, but is fully deterministic. Looks random but isn't. Fast. Used for cryptography in practise.  (CTR, stream ciphers)
 
+---
 ### Task 2
 a)
 Two-key Triple DES = 112-bits key.
@@ -94,11 +95,47 @@ $\frac{2^{111}}{2^{55}} = 2^{56}$ seconds = $2^{31}$ years
 b)
 	 About 80 years.
 
+---
 ### Task 3
 If encryption is linear, decryption is also linear. 
 The attacker can take the 128 simplest ciphertext (1 1-bit and rest 0) and ask the decryption oracle of every one of them. Now the attacker has 128 plaintext blocks saved.
 
 Since the system is linear, the attacker can decrypt any ciphertext by XORing the decryption of the single bit versions (which the attacker already have)
+
+---
+### Task 4
+#### a) substitution-permutation
+$$K_{1} = 11000011,\; K_{2} = 10000111$$
+##### Round 1:
+P XOR K1
+01010101 $\oplus$ 11000011 = 10010110
+Substitution gives 01000001 and permutation gives 00001010
+
+##### Round 2:
+C1 XOR K2
+00001010 $\oplus$ 10000111 = 10001101
+Substitution gives 01101100 and permutation gives 11100010
+
+C = 11100010
+
+
+#### b) feistel cipher
+
+
+### Task 5
+Double encryption:
+$$C = E_{K_{2}}({E_{K_{1}}}(P)), \;\;\; K_{1},K_{2} \in \{0, 1\}^{128}$$
+A meet in the middle attack given one plaintext-chipertext pair (P, C):
+
+1. Forward table:
+	For every $2^{128}$ $K_{1}$ compute $X = E_{K_{1}}(P)$, store (X, $K_{1}$) in a lookup table keyed by X.
+
+
+	
+
+
+
+
 
 
 
