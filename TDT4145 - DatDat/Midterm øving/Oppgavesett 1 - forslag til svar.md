@@ -11,7 +11,7 @@
 
 Hva er forskjellen på **schema** og **instance** i en database? Svar med én setning for hver.
 
-Et schema er hvordan en database/tabell skal se ut, mens en instance er en faktisk versjon av databasen på et gitt tidspunkt.
+> Et schema er hvordan en database/tabell skal se ut, mens en instance er en faktisk versjon av databasen på et gitt tidspunkt.
 
 ---
 
@@ -23,6 +23,13 @@ B) Integrity problems
 C) Turing-komplett spørringsspråk  
 D) Concurrent access problems  
 E) Security problems
+
+> A - Samme data lagret flere steder -> inkonsistens
+> B - Uten sentrale constraints er det lett å få ugyldige data.
+> D - Samtidige brukere kan overskrive hverandre uten transaksjoner/låsing
+> E - Filsystemet mangler tilgangskontroll
+
+
 
 ---
 
@@ -36,6 +43,7 @@ C) {id, name}
 D) {dept_name}  
 E) {id, dept_name}
 
+> A, C, E
 ---
 
 #### 4) (4p) Relasjonsalgebra – grunnoperatorer
@@ -44,15 +52,22 @@ Match operator → beskrivelse (skriv f.eks. “σ = …”):
 
 - σ, π, ×, ∪, −, ρ
 
+>σ = seleksjon
+π = projeksjon
+× = cross product
+∪ = union
+− = set difference
+ρ = rename
 
 ---
 
 #### 5) (4p) RA → intuisjon (True/False)
 
-a) π (projeksjon) fjerner alltid duplikater i RA.  
-b) SQL fjerner alltid duplikater med mindre du bruker ALL.  
-c) σ (seleksjon) kan sammenligne attributter med hverandre.  
-d) R ⋈θ S er definert som σθ(R × S).
+a) π (projeksjon) fjerner alltid duplikater i RA. **TRUE**
+b) SQL fjerner alltid duplikater med mindre du bruker ALL.  **FALSE**
+c) σ (seleksjon) kan sammenligne attributter med hverandre.  **TRUE**
+d) R ⋈θ S er definert som σθ(R × S). **TRUE**
+
 
 ---
 
@@ -67,9 +82,9 @@ WHERE salary > 85000;
 ```
 
 Hvilke påstander stemmer? (kryss av alle)  
-A) Resultatet kan inneholde duplikater  
+**A) Resultatet kan inneholde duplikater**  
 B) Resultatet er sortert alfabetisk  
-C) DISTINCT ville kunne endret resultatet  
+**C) DISTINCT ville kunne endret resultatet**  
 D) WHERE kjøres etter GROUP BY  
 E) Queryen er ugyldig uten ORDER BY
 
@@ -79,10 +94,11 @@ E) Queryen er ugyldig uten ORDER BY
 
 Kryss av alle korrekte:  
 A) `salary = NULL` er riktig måte å teste NULL på  
-B) `salary IS NULL` er riktig måte å teste NULL på  
+**B) `salary IS NULL` er riktig måte å teste NULL på**  
 C) `NULL = NULL` evaluerer til TRUE i SQL  
-D) `5 < NULL` evaluerer til UNKNOWN
+D) **`5 < NULL` evaluerer til UNKNOWN**
 
+> Alle sammenligninger med NULL gir UNKNOWN
 ---
 
 #### 8) (5p) GROUP BY / HAVING
