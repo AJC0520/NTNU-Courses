@@ -52,6 +52,10 @@ unknown or unknown is unknown
 
 not unknown is unknown
 
+A subquery that uses a correlation name from an outer query is called a correlated subquery.
+
+Scalar subquery is a subquery where it only returns one tuple containing a single attribute in which can be used wherever returning a value is permitted.
+
 
 
 
