@@ -23,8 +23,6 @@
 # 📅 Dag 4
 - [ ] Sections 7.1–7.3
 - [ ] Section 7.6
-- [ ] Repetér BCNF
-- [ ] Gjør noen oppgaver på dekomponering
 
 # 📅 Dag 5
 grind
