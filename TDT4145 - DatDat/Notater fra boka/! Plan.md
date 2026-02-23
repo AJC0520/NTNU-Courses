@@ -15,14 +15,14 @@
 - [x] Sections 5.2–5.4
 
 # 📅 Dag 3 
-- [ ] Sections 6.1–6.6
-- [ ] Sections 6.7
-- [ ] Section 6.9
-- [ ] Section 7.1
+- [x] Sections 6.1–6.6
+- [x] Sections 6.7
+- [x] Section 6.9
+- [x] Section 7.1
 
 # 📅 Dag 4
-- [ ] Sections 7.1–7.3
-- [ ] Section 7.6
+- [x] Sections 7.1–7.3
+- [x] Section 7.6
 
 # 📅 Dag 5
 grind
