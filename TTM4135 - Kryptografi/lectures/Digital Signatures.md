@@ -21,7 +21,7 @@ Correctness: valid signatures verify
 Unforgeability: infeasable to produce a fresh valid (m, σ) without KS, even with access to a chosen-message snigning oracle (strong modern notion)
 
 Attack goals:
-- Key recovery
+- Key recovery (derive Ks from Kv + signature)
 - Selective forgery (forge a chosen target message)
 - Existensial forgery (forge any new message)
 - Modern target: existensial unforgeability under chosen message attack.
@@ -43,4 +43,43 @@ hash/encoding choices
 Standard hash like SHA-256
 Full domain hash (map into 1..n)
 RSA-PSS (probabilistic encoding)
+
+### Discrete-log-based signatures
+Security relies on the discrete log problem.
+
+#### ElGamal signatures (in $Z^{*}_{p}$)
+Setup:
+- Prime p, generator g
+- Private key x with 0 < x < p -1. 
+- Public key $y=g^{x}$ mod p
+
+Sign m:
+1. Pick a random k with 0 < k < p -1; Compute r = $g^{k}$ mod p
+2. Compute $$s=k^{-1}(H(m) -xr)\;mod\;(p-1)$$
+3. Signature $\sigma = (r, s)$
+
+Verify:
+Check $$g^{H(m)}\equiv y^{r}\cdot r^{s}\; (mod\;p$$
+#### Schnorr signatures (in $Z^{*}_{p}$)
+Same key set up as ElGamal: p,g, x, y = $g^{x}$
+
+Sign m:
+1. Choose random k; compute $r =g^{k}\;(mod\;p)$
+2. Compute challenge e = H ( r || m)
+3. Compute response s = k - xe mod (p -1)
+4. Signature $\sigma = (e,s)$
+
+Verify:
+Accept if:
+$e = H(g^{s}\cdot y^{e} || m)$
+
+#### DSA (Digital Signature Algorithm)
+Parameters:
+- Prime p (L bits), prime q | (p -1) (N bits)
+- 
+
+
+
+
+
 

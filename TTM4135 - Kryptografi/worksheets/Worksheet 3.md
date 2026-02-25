@@ -129,9 +129,74 @@ A meet in the middle attack given one plaintext-chipertext pair (P, C):
 
 1. Forward table:
 	For every $2^{128}$ $K_{1}$ compute $X = E_{K_{1}}(P)$, store (X, $K_{1}$) in a lookup table keyed by X.
+2. Backward search:
+	For every $K_{2}$ ($2^{128}$) compute $Y=D_{k_{2}}(C)$
+	Check whether Y appears in the table. Any match gives a candidate ($K_{1},K_{2}$). In practice you verify candidates using a second plaintext-ciphertext pair to eliminate false matches.
 
 
-	
+#### Computation required:
+- Building the table: $2^{128}$ AES encryptions
+- Searching $2^{128}$ AES descryptions
+- Total about:
+	- $2^{128} + 2^{128} \approx 2^{129}$ AES operations
+
+Work is roughly $2^{129}$ AES calls
+
+#### Storage required:
+Store about $2^{128}$ intermediate values
+Each intermediate X is 128 bits = 16 bytes
+Need to keep the associated K1 (16 bytes)
+$2^{128} \cdot 32\; bytes=2^{128} \cdot 2^{5}=2^{133}$
+
+### Task 6
+#### a) length of ciphertext
+AES = 128 bit block size
+M1 = 128 bits
+M2 = 72 bits
+
+E(M1) = 128 bits
+Split so first 72 bits = C2
+last 56 bits = J
+E(M1) = C2 || J
+
+M2 is only 72 bits
+Take 56 stolen bits J
+M2 || J
+C1 = E(M2 || J)
+Send (C1, C2)
+
+So length is the same as the original message (200 bits)
+
+#### b) how to decrypt
+Receiver gets (C1, C2)
+C1 = 128 bits
+C2 = 72 bits
+
+Decrypt C1:
+$X = D_{K}(C_{1})$
+
+Then X is 128 bits
+X = M2 || J
+
+Split: first 72 bits of X = M2
+Last 56 bits of X = J
+
+Recover M1
+Y=C2​ || J
+M1 = Dk(Y)
+
+M = M1 || M2
+
+#### Task 7
+![[file-20260225110711030.png]]
+
+
+
+
+
+
+
+
 
 
 
