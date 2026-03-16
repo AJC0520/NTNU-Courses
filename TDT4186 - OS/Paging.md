@@ -82,3 +82,24 @@ Linear page table:
 
 
 ![[file-20260311104711181.png]]
+
+#### Page Table Entry (PTE) fields
+Each PTE is 64 bits:
+- 10-54 (44 bits): Physical Page Number
+- 0-9 (10 bits): Flags and other information
+
+#### Inverted Page Tables
+Instead of one page table per process, inverted page table has one entry per physical frame. Each entry records which process uses that frame and which virtual page it corresponds to.
+![[file-20260316115752845.png]]
+
+Memory saving, but long searching time, page sharing.
+
+
+| Aspect       | Regular Per-Process                                 | Inverted                                  |
+| ------------ | --------------------------------------------------- | ----------------------------------------- |
+| Size         | Proportional to virtual address space (can be huge) | Proportional to physical memory (smaller) |
+| Lookup speed | Fast, indexed directly by VPN                       | Slow, must search entire table            |
+| Page sharing | Easy, two PTE points to the same frame              | Difficult to implement                    |
+#### Page sharing
+With per-process page table, page sharing is easy: two different PTEs in different processes can point to the same physical frame. This is how shared libraries are loaded once into physical memory but mapped into multiple processes virtual address space. 
+![[file-20260316120037968.png]]
